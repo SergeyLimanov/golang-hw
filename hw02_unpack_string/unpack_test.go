@@ -22,10 +22,10 @@ func TestUnpack(t *testing.T) {
 		{input: `qwe\\5`, expected: `qwe\\\\\`},
 		{input: `qwe\\\3`, expected: `qwe\3`},
 		// дополнительные кейсы
-        {input: "d\n5abc", expected: "d\n\n\n\n\nabc"},
-        {input: "a0", expected: ""},
-        {input: "a1", expected: "a"},
-        {input: `\1`, expected: `1`},
+		{input: "d\n5abc", expected: "d\n\n\n\n\nabc"},
+		{input: "a0", expected: ""},
+		{input: "a1", expected: "a"},
+		{input: `\1`, expected: `1`},
 	}
 
 	for _, tc := range tests {

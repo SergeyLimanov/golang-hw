@@ -1,4 +1,3 @@
-
 package hw02_unpack_string
 
 import (
@@ -8,9 +7,7 @@ import (
 	"unicode"
 )
 
-
 var ErrInvalidString = errors.New("invalid string")
-
 
 func Unpack(s string) (string, error) {
 
@@ -18,15 +15,12 @@ func Unpack(s string) (string, error) {
 
 	var runes []rune = []rune(s)
 
-
 	var prev rune
 	var hasPrev bool = false
-
 
 	var i int = 0
 	for i < len(runes) {
 		var r rune = runes[i]
-
 
 		if r == '\\' {
 
@@ -39,7 +33,6 @@ func Unpack(s string) (string, error) {
 				return "", ErrInvalidString
 			}
 
-
 			if hasPrev {
 				b.WriteRune(prev)
 				hasPrev = false
@@ -47,7 +40,6 @@ func Unpack(s string) (string, error) {
 
 			prev = next
 			hasPrev = true
-
 
 			i += 2
 			continue
@@ -60,10 +52,8 @@ func Unpack(s string) (string, error) {
 				return "", ErrInvalidString
 			}
 
-
 			var n int
 			n, _ = strconv.Atoi(string(r))
-
 
 			if n > 0 {
 				b.WriteString(strings.Repeat(string(prev), n))
@@ -74,7 +64,6 @@ func Unpack(s string) (string, error) {
 			continue
 		}
 
-
 		if hasPrev {
 			b.WriteRune(prev)
 		}
@@ -84,11 +73,9 @@ func Unpack(s string) (string, error) {
 		i++
 	}
 
-
 	if hasPrev {
 		b.WriteRune(prev)
 	}
-
 
 	return b.String(), nil
 }
