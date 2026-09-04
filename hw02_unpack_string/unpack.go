@@ -19,12 +19,12 @@ func Unpack(s string) (string, error) {
 	for i := 0; i < len(runes); {
 		r := runes[i]
 
-		if r == '\' {
+		if r == '\\' {
 			if i+1 >= len(runes) {
 				return "", ErrInvalidString
 			}
 			next := runes[i+1]
-			if !(unicode.IsDigit(next) || next == '\') {
+			if !(unicode.IsDigit(next) || next == '\\') {
 				return "", ErrInvalidString
 			}
 
